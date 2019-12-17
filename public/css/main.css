@@ -141,3 +141,25 @@ pretty-input > div{
 .basic-collapse.demo-box {
 	width: 450px;
 }
+
+.inp-num-demo {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.inp-num-demo label {
+	font-size: 12px;
+}
+
+.modal-img {
+	display: grid;
+}
+
+.modal-img > img {
+	place-self: center;
+	width: 100px;
+	height: auto;
+	padding: 10px;
+	border-radius: 50%;
+	background-color: rgba(255,255,255, .5);
+}

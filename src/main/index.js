@@ -8,4 +8,6 @@ import '../components/Tag';
 import '../components/Card';
 import '../components/Collapse';
 import '../components/Collapse/CollapseItem';
+import '../components/InputNumber';
+import '../components/Modal';
 import '@fortawesome/fontawesome-free/js/all';

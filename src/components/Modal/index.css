@@ -15,6 +15,7 @@ pretty-modal[visible] > .modal-box {
 	visibility: visible;
 	opacity: 1;
 	transition: all .3s;
+	z-index: 1000;
 }
 
 pretty-modal[transparent] .modal-wrapper{
@@ -30,8 +31,7 @@ pretty-modal[transparent] .modal-title {
 pretty-modal > .modal-box > * {
 	place-self: center;
 	width: fit-content;
-	max-width: 500px;
-	min-width: 400px;
+	min-width: 350px;
 	box-sizing: border-box;
 	background-color: #fff;
 	border-radius: 4px;

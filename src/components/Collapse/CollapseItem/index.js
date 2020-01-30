@@ -1,9 +1,11 @@
 import { MetaComponent } from '@rebelstack-io/metaflux';
+import { getBody } from '../../../util';
 import './index.css';
 
 class CollapseItem extends MetaComponent {
 	constructor() {
 		super();
+		this.body = getBody(this);
 	}
 	// eslint-disable-next-line class-method-use-this
 	render() {
@@ -16,19 +18,11 @@ class CollapseItem extends MetaComponent {
 				</div>
 				<div class="collapse-content">
 					<div>
-						${ this.getBody() }
+						${ this.body }
 					</div>
 				<div>
 			</div>
 		`
-	}
-	/**
-	 * get component body
-	 */
-	getBody() {
-		const b = this.innerHTML;
-		this.innerHTML = '';
-		return b;
 	}
 	/**
 	 * get component properties
@@ -42,6 +36,7 @@ class CollapseItem extends MetaComponent {
 			title, expanded
 		}
 	}
+
 	/**
 	 * add DOM listeners
 	 */

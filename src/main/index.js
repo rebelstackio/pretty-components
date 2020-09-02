@@ -1,11 +1,11 @@
 require('../handlers');
 require('../css/general.css');
 const { PrettyButton } = require('../components/Button');
+const { PrettyCard } = require('../components/Card');
 require('../components/DropDown');
 require('../components/Input');
 require('../components/Spiner');
 require('../components/Tag');
-require('../components/Card');
 require('../components/Collapse');
 require('../components/Collapse/CollapseItem');
 require('../components/InputNumber');
@@ -22,4 +22,7 @@ HTMLElement.prototype._sel = function (query, isAll) {
 
 const _$D = document;
 
-module.exports = { PrettyButton }
+module.exports = {
+	PrettyButton,
+	PrettyCard
+}

@@ -5,7 +5,11 @@
 	background-color: #ffffff;
 	position: relative;
 	max-width: 80vw;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 10px;
+	column-gap: 10px;
 }
 
 .props {

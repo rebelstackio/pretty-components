@@ -1,5 +1,13 @@
-import { MetaComponent } from '@rebelstack-io/metaflux';
-import './index.css';
+const { MetaComponent, Div, Button } = require('@rebelstack-io/metaflux');
+require('./index.css');
+
+const PrettyDropdown = function (pops, content) {
+	props = props ? props : {};
+	return Div({className: 'p-dropdown collapsed'}, [
+		Button(props, props.title),
+		Div({className: 'p-dropdown-body p-hidden'}, content)
+	])
+}
 
 class DropDown extends MetaComponent {
 	/**
@@ -108,3 +116,5 @@ class DropDown extends MetaComponent {
 }
 
 window.customElements.define('pretty-dropdown', DropDown);
+
+module.exports = { PrettyDropdown }

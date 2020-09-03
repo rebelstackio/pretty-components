@@ -7,7 +7,7 @@ const PrettyCard = function(props, content) {
 	return Div({className: !props.bordered ? 'p-card' : 'p-card bordered'},
 	[
 		props.avatar ? Span({ className: 'p-avatar' }, Img({src: props.avatar})) : '',
-		Div({className: 'head'}, [
+		Div({className: props.avatar ? 'head avatar': 'head'}, [
 			H3(false, props.title),
 			Div({className: 'description'}, props.description)
 		]),

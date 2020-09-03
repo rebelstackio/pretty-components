@@ -81,7 +81,7 @@
 	font-size: 14px;
 }
 
-.p-card[avatar] .head {
+.head.avatar {
 	border-bottom: unset;
 }
 .p-card[avatar] > div {

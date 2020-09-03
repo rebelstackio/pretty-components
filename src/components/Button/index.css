@@ -1,4 +1,4 @@
-pretty-button > button {
+.p-btn > button {
 	height: 32px;
 	padding: 0 15px;
 	transition: all .3s cubic-bezier(.645, .045, .355, 1);
@@ -18,45 +18,45 @@ pretty-button > button {
 	outline: none;
 }
 
-pretty-button > button:hover {
+.p-btn > button:hover {
 	border-color: var(--default-color-hv);
 	color: var(--default-color-hv);
 }
 
 /* types */
 
-pretty-button[type="primary"] > button {
+.p-btn.primary > button {
 	background-color: var(--primary-bg);
 	color: var(--primary-color);
 	border: 1px solid var(--primary-bg);
 }
 
-pretty-button[type="primary"] > button:hover {
+.p-btn.primary > button:hover {
 	background-color: var(--primary-bg-hv);
 	border: 1px solid var(--primary-bg-hv);
 }
 
-pretty-button[type="danger"] > button {
+.p-btn.danger > button {
 	background-color: var(--danger-bg);
 	color: var(--primary-color);
 	border: 1px solid var(--danger-bg);
 }
 
-pretty-button[type="danger"] > button:hover {
+.p-btn.danger > button:hover {
 	background-color: var(--danger-bg-hv);
 	border: 1px solid var(--danger-bg-hv);
 }
 
-pretty-button[type="dashed"] > button {
+.p-btn.dashed > button {
 	border-style: dashed;
 }
 
-pretty-button[type="dashed"] > button:hover {
+.p-btn.dashed > button:hover {
 	color: var(--primary-bg-hv);
 	border: 1px dashed var(--primary-bg-hv);
 }
 
-pretty-button[type="link"] > button {
+.p-btn.link > button {
 	color: var(--primary-bg);
 	background-color: transparent;
 	border-color: transparent;
@@ -64,7 +64,7 @@ pretty-button[type="link"] > button {
 	box-shadow: none;
 }
 
-pretty-button[type="link"] > button:hover{
+.p-btn.link > button:hover{
 	color: var(--primary-bg-hv);
 	background-color: transparent;
 }

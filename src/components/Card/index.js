@@ -1,6 +1,19 @@
-import { MetaComponent } from '@rebelstack-io/metaflux';
-import { getBody } from '../../util';
-import './index.css';
+const { MetaComponent, Div, Span, Img, H3} = require('@rebelstack-io/metaflux');
+const { getBody } = require('../../util');
+require('./index.css');
+
+const PrettyCard = function(props, content) {
+	props = props ? props : {};
+	return Div({className: !props.bordered ? 'p-card' : 'p-card bordered'},
+	[
+		props.avatar ? Span({ className: 'p-avatar' }, Img({src: props.avatar})) : '',
+		Div({className: props.avatar ? 'head avatar': 'head'}, [
+			H3(false, props.title),
+			Div({className: 'description'}, props.description)
+		]),
+		!content ? '' : Div({className:'body'}, content)
+	]);
+}
 
 class Card extends MetaComponent {
 	constructor () {
@@ -9,32 +22,8 @@ class Card extends MetaComponent {
 	}
 	// eslint-disable-next-line class-method-use-this
 	render() {
-		const { title, description, avatar } = this.getProps();
-		
-		return `
-			<div>
-				${
-					avatar !== ''
-					? `<span class="p-avatar">
-						${avatar}
-					</span>`
-					: ''
-				}
-				<div class="head">
-					<h3>${title}</h3>
-					<div class="description">${description}</div>
-				</div>
-				${
-					this.body !== ''
-					? `
-					<div class="body">
-						${this.body}
-					</div>
-					`
-					: ''
-				}
-			</div>
-		`
+		const props = this.getProps();
+		return PrettyCard(props, this.body)
 	}
 	/**
 	 * get properties
@@ -47,7 +36,7 @@ class Card extends MetaComponent {
 			? this.getAttribute('description')
 			: '';
 		const avatar = this.getAttribute('avatar') !== null
-			? `<img src="${this.getAttribute('avatar')}">`
+			? this.getAttribute('avatar')
 			: '';
 		return {
 			title, avatar, description
@@ -56,3 +45,5 @@ class Card extends MetaComponent {
 }
 
 window.customElements.define('pretty-card', Card);
+
+module.exports = { PrettyCard };

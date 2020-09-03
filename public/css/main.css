@@ -5,7 +5,10 @@
 	background-color: #ffffff;
 	position: relative;
 	max-width: 80vw;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	display: grid;
+	row-gap: 20px;
+	place-items: center;
 }
 
 .props {

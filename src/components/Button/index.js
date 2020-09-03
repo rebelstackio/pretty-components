@@ -1,72 +1,42 @@
-import { MetaComponent } from '@rebelstack-io/metaflux';
-import '../../handlers';
-import './index.css';
+const { MetaComponent, Button, Div } = require('@rebelstack-io/metaflux/dist/metaflux.js');
+require('../../handlers');
+require('./index.css');
 
-class Button extends MetaComponent {
-	/**
-	 * add DOM listeners
-	 */
-	addListeners () {
-		const customCallback = this.props.onclick;
-		if (customCallback) {
-			this.addEventListener(
-				'click',() => {
-					window[customCallback](this)
-				},
-			);
-		}
-		if (this.props.href) {
-			this.addEventListener('click', () => {
-				if (this.props.target) {
-					window.open(
-						this.props.href,
-						this.props.target
-					);
-				} else {
-					window.open(this.props.href)
-				}
-			})
-		}
+const PrettyButton = function (props, content) {
+	props = props ? props : {}
+	const className = props.type ? 'p-btn ' + props.type : 'p-btn'
+	const button = Div({className: className}).Button(props, content)
+	const el = button.baseNode();
+	if(!props.onclick && props.href) {
+		button.onclick = () => { document.location.href = button.href }
 	}
+	return el;
+}
+
+class PButton extends MetaComponent {
 	/**
 	 * MetaComponent constructor needs storage.
 	 */
 	constructor () {
-		super(global.storage);
+		super();
 	}
 	// eslint-disable-next-line class-method-use-this
 	render () {
 		this.innerHTML = '';
 		this.props = this.getProps();
-		return `
-			<button ${ this.props.id } type="button"> ${ this.props.value } </button>
-		`;
+		return PrettyButton(this.props, this.props.value);
 	}
 
 	getProps() {
-		const value = this.getAttribute("value")
-		const id = this.id ? ('id="' + this.id + '"') : '';
-		this.removeAttribute('id');
-		const href = this.getAttribute('href');
-		const onClick = this.getAttribute('onclick');
-		const target = this.getAttribute('target');
-		return {
-			value: value !== null ? value : 'value',
-			id,
-			href: href !== null ? href : false,
-			onclick: onClick !== null ? onClick : false,
-			target: target !== null ? target : false
-		}
-	}
-
-	/**
-	 * Handle Events in a organized way.
-	 */
-	handleStoreEvents () {
-		return {
-			
-		};
+		let _props = {}
+		this.getAttributeNames().forEach((attName) => {
+			const att = this.getAttribute(attName);
+			_props[attName] = attName === 'onclick' ? window[att] : att;
+		})
+		return _props;
 	}
 }
 
-window.customElements.define('pretty-button', Button);
+window.customElements.define('pretty-button', PButton);
+
+module.exports = { PrettyButton }

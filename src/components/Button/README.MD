@@ -1,4 +1,17 @@
 # Pretty Buttons
+## usage
+### JS Component
+```js
+import {PrettyButton} from '@rebelstack-io/pretty-components';
+// empty button
+PrettyButton();
+// type can be: primary | danger | dashed | link
+PrettyButton({type: 'primary'}, 'Clickme');
+// button link
+PrettyButton({type: 'link', href: '#ref'}, 'Click to scroll');
+```
+
+### WebComponent 
 ```html
 <pretty-button type="primary" value="Primary" onclick="myFunction" size="default"></pretty-button>
 ```

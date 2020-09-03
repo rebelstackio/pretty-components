@@ -1,16 +1,28 @@
-import '../handlers';
-import '../css/general.css';
-import '../components/Button';
-import '../components/DropDown';
-import '../components/Input';
-import '../components/Spiner';
-import '../components/Tag';
-import '../components/Card';
-import '../components/Collapse';
-import '../components/Collapse/CollapseItem';
-import '../components/InputNumber';
-import '../components/Modal';
-import '../components/Menu';
-import '../components/Menu/MenuItem';
-import '../components/Template';
-import '@fortawesome/fontawesome-free/js/all';
+require('../handlers');
+require('../css/general.css');
+const { PrettyButton } = require('../components/Button');
+const { PrettyCard } = require('../components/Card');
+require('../components/DropDown');
+require('../components/Input');
+require('../components/Spiner');
+require('../components/Tag');
+require('../components/Collapse');
+require('../components/Collapse/CollapseItem');
+require('../components/InputNumber');
+require('../components/Modal');
+require('../components/Menu');
+require('../components/Menu/MenuItem');
+require('../components/Template');
+require('@fortawesome/fontawesome-free/js/all');
+
+HTMLElement.prototype._sel = function (query, isAll) {
+	if (isAll) return this.querySelectorAll(query);
+	return this.querySelector(query);
+}
+
+const _$D = document;
+
+module.exports = {
+	PrettyButton,
+	PrettyCard
+}

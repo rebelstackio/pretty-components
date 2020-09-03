@@ -10,7 +10,8 @@ module.exports = () => {
 		entry: './src/main/index.js',
 		output: {
 			path: path.resolve(__dirname, 'dist'),
-			filename: 'main.js'
+			filename: 'prettycomponents.js',
+			libraryTarget: 'umd'
 		},
 		devServer: {
 			contentBase: path.resolve(__dirname, 'public')
@@ -20,7 +21,7 @@ module.exports = () => {
 				{
 					test: /\.(js)$/,
 					exclude: /node_modules/,
-					use: ['babel-loader'],
+					loader: ['babel-loader'],
 					include: [
 						/\/node_modules\/@rebelstack-io\/metaflux/
 					]
@@ -61,7 +62,7 @@ module.exports = () => {
 				template: path.resolve(__dirname, 'public/index.html'),
 				hash: false,
 				filename: filename,
-				inject: 'body'
+				inject: false
 			})
 		],
 		devtool: 'source-map'
